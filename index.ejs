@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Biodata Form</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <a href="#main-form" class="skip-link">Skip to form</a>
+
+    <header class="banner">
+        <h1>Biodata</h1>
+    </header>
+
+    <div class="content">
+
+        <div class="info-box">
+            <span class="info-icon" aria-hidden="true">i</span>
+            <div>
+                <strong>Info</strong>
+                <p>Complete this biodata by adding your answers for each field.</p>
+            </div>
+        </div>
+
+        <div role="status" aria-live="polite" id="form-status" style="position:absolute; left:-9999px;"></div>
+
+        <form id="main-form" action="/register" method="POST" aria-labelledby="form-title" novalidate>
+
+            <fieldset>
+                <legend>Personal details</legend>
+
+                <div class="field-row">
+                    <label for="fn" class="required">First name:</label>
+                    <input type="text" id="fn" name="fn" required aria-required="true">
+                </div>
+
+                <div class="field-row">
+                    <label for="ln" class="required">Last name:</label>
+                    <input type="text" id="ln" name="ln" required aria-required="true">
+                </div>
+
+                <div class="field-row">
+                    <label for="age" class="required">Age:</label>
+                    <input type="number" id="age" name="age" min="0" max="150" required aria-required="true">
+                </div>
+
+                <div class="field-row">
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender">
+                </div>
+
+                <div class="field-row">
+                    <label for="birthday">Date of birth:</label>
+                    <input type="date" id="birthday" name="birthday">
+                </div>
+
+                <div class="field-row">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Family background</legend>
+
+                <div class="field-row">
+                    <label for="father">Father's name:</label>
+                    <input type="text" id="father" name="father">
+                </div>
+
+                <div class="field-row">
+                    <label for="mother">Mother's name:</label>
+                    <input type="text" id="mother" name="mother">
+                </div>
+
+                <div class="field-row">
+                    <label for="siblings">Number of siblings:</label>
+                    <input type="number" id="siblings" name="siblings" min="0">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Education &amp; profession</legend>
+
+                <div class="field-row">
+                    <label for="education">Education:</label>
+                    <input type="text" id="education" name="education">
+                </div>
+
+                <div class="field-row">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" name="course">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Civil status</legend>
+
+                <div class="field-row">
+                    <label for="civilStatus">Civil status:</label>
+                    <input type="text" id="civilStatus" name="civilStatus">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Contact</legend>
+
+                <div class="field-row">
+                    <label for="phone">Contact number:</label>
+                    <span id="phone-hint" class="hint">Format: 09XXXXXXXXX</span>
+                    <input type="tel" id="phone" name="phone" aria-describedby="phone-hint">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Hobbies &amp; skills</legend>
+
+                <div class="field-row">
+                    <label for="hobbies">Hobbies:</label>
+                    <input type="text" id="hobbies" name="hobbies">
+                </div>
+
+                <div class="field-row">
+                    <label for="skills">Skills:</label>
+                    <input type="text" id="skills" name="skills">
+                </div>
+            </fieldset>
+
+            <button type="submit">Submit Biodata</button>
+
+        </form>
+
+    </div>
+
+    <script>
+        (function () {
+            var form = document.getElementById('main-form');
+            var status = document.getElementById('form-status');
+
+            form.addEventListener('submit', function (event) {
+                var invalidFields = [];
+                var requiredInputs = form.querySelectorAll('[required]');
+
+                requiredInputs.forEach(function (input) {
+                    var errorId = input.id + '-error';
+                    var existingError = document.getElementById(errorId);
+                    if (existingError) {
+                        existingError.remove();
+                    }
+                    input.removeAttribute('aria-invalid');
+
+                    if (!input.value.trim()) {
+                        input.setAttribute('aria-invalid', 'true');
+                        var error = document.createElement('span');
+                        error.id = errorId;
+                        error.className = 'error-message';
+                        error.textContent = 'This field is required.';
+                        input.insertAdjacentElement('afterend', error);
+                        input.setAttribute('aria-describedby', errorId);
+                        invalidFields.push(input);
+                    }
+                });
+
+                if (invalidFields.length > 0) {
+                    event.preventDefault();
+                    invalidFields[0].focus();
+                    status.textContent = invalidFields.length + ' field' +
+                        (invalidFields.length > 1 ? 's need' : ' needs') +
+                        ' your attention before submitting.';
+                } else {
+                    status.textContent = 'Submitting your biodata.';
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

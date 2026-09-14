@@ -1,0 +1,174 @@
+/* ===== Base ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+}
+
+/* ===== Skip link (accessibility) ===== */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #16202b;
+    color: white;
+    padding: 10px 16px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ===== Banner ===== */
+.banner {
+    background: #93a9b8;
+    padding: 48px 60px;
+}
+
+.banner h1 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 400;
+    color: #16202b;
+}
+
+/* ===== Page content ===== */
+.content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+}
+
+/* ===== Info box ===== */
+.info-box {
+    display: flex;
+    gap: 12px;
+    background: #e8f2fb;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+}
+
+.info-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #4a7ba6;
+    color: #4a7ba6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.info-box strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* ===== Sections ===== */
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 32px;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #d5dbe0;
+    color: #16202b;
+}
+
+/* ===== Field rows ===== */
+.field-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eef1f3;
+    flex-wrap: wrap;
+}
+
+.field-row label {
+    font-weight: 600;
+    color: #16202b;
+    min-width: 170px;
+}
+
+.required::after {
+    content: " *";
+    color: #b00020;
+}
+
+.field-row input {
+    flex: 1;
+    min-width: 150px;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    padding: 2px 4px;
+    color: #333;
+}
+
+.field-row input:focus-visible {
+    outline: 2px solid #4a7ba6;
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+.field-row input[aria-invalid="true"] {
+    outline: 2px solid #b00020;
+    border-radius: 3px;
+}
+
+.hint {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    color: #666;
+    margin-top: -4px;
+}
+
+.error-message {
+    display: block;
+    width: 100%;
+    color: #b00020;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ===== Submit button ===== */
+button[type="submit"] {
+    margin-top: 12px;
+    background: #16202b;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background: #2c3e50;
+}
+
+button[type="submit"]:focus-visible {
+    outline: 3px solid #4a7ba6;
+    outline-offset: 2px;
+}
